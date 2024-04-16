@@ -15,7 +15,7 @@ public class WebHistory {
 
 	public void visitPage(String page) {
 		backwardStack.push(currentPage);
-		forwardStack.clear();
+//		forwardStack.clear();
 		currentPage = page;
 		System.out.println("The visited page is " + page);
 	}
@@ -25,7 +25,10 @@ public class WebHistory {
 	}
 
 	public void goBack() {
-		if (!backwardStack.isEmpty()) {
+		if (backwardStack == null) {
+			System.out.println("the stack is empty");
+		}
+		else if (!backwardStack.isEmpty()) {
 			forwardStack.push(currentPage);
 			currentPage = backwardStack.pop();
 			System.out.println("Pervious page was " + currentPage);
@@ -35,7 +38,10 @@ public class WebHistory {
 	}
 
 	public void goForward() {
-		if (!forwardStack.isEmpty()) {
+		if (forwardStack == null) {
+			System.out.println("the stack is empty");
+		}
+		else if (!forwardStack.isEmpty()) {
 			backwardStack.push(currentPage);
 			currentPage = forwardStack.pop();
 			System.out.println("This was your next page " + currentPage);
